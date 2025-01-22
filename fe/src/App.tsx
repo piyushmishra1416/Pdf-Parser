@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
 import {
   Container,
   Typography,
@@ -45,6 +47,8 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
   height: theme.spacing(7),
 }));
 
+const cache = createCache({ key: 'css' });
+
 const App: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [parsedData, setParsedData] = useState<any>(null);
@@ -84,6 +88,7 @@ const App: React.FC = () => {
   };
 
   return (
+    <CacheProvider value={cache}>
     <Container maxWidth="md">
       <Fade in={true} timeout={1000}>
         <StyledPaper elevation={3}>
@@ -199,6 +204,7 @@ const App: React.FC = () => {
         </Fade>
       )}
     </Container>
+    </CacheProvider>
   );
 };
 
