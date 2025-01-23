@@ -60,6 +60,9 @@ const App: React.FC = () => {
       setFile(e.target.files[0]);
     }
   };
+  const API_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://resume-parser-api.onrender.com' 
+  : 'http://localhost:8000';
 
   const handleUpload = async () => {
     if (!file) {
@@ -74,7 +77,7 @@ const App: React.FC = () => {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/parse-resume/', formData, {
+      const response = await axios.post(`${API_URL}/api/parse-resume/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
