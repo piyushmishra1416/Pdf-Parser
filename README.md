@@ -2,6 +2,10 @@
 
 A web application that parses resumes in PDF format and extracts key information using Natural Language Processing (NLP).
 
+## Video Demonstration
+
+[Direct Google Drive Link](https://drive.google.com/file/d/1FF5YQWRWTSbCdIR83X6YxL2rxLut2JLq/view?usp=sharing)
+
 ## Features
 
 - PDF text extraction
