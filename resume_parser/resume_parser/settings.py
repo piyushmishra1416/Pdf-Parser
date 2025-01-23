@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-3q@i+@%$w#hkoe32pw36_5u)(5f@^&22boj%l-$+ynj$!6-zuj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
 
 
 # Application definition
@@ -42,12 +42,22 @@ INSTALLED_APPS = [
     'api',
 ]
 CORS_ALLOWED_ORIGINS = [
-       "http://localhost:5173",
-   ]
+    "http://localhost:5173",
+    "https://pdf-parser-eight.vercel.app/"  # Your Vercel domain
+]
+
+# Optional: Allow all headers and methods for development
+CORS_ALLOW_ALL_ORIGINS = False  # Set to True only for development if needed
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "OPTIONS",
+]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -124,6 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
