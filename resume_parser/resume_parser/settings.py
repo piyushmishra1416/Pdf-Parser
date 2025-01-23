@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://pdf-parser-eight.vercel.app/"  # Your Vercel domain
+    "https://pdf-parser-eight.vercel.app"  # Remove trailing slash
 ]
 
 # Optional: Allow all headers and methods for development
